@@ -1,5 +1,13 @@
-import { CoffeeBrandLanding } from '@/components/magicpath/landing-page/CoffeeBrandLanding';
+# LandingPage
 
-export default function Home() {
-  return <CoffeeBrandLanding />;
-}
+## Import
+
+```tsx
+import { CoffeeBrandLanding } from '@/components/magicpath/landing-page/CoffeeBrandLanding';
+```
+
+## Usage
+
+```tsx
+<CoffeeBrandLanding />
+```

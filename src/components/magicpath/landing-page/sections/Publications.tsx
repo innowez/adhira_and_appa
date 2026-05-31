@@ -1,4 +1,5 @@
 "use client";
+
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -6,14 +7,12 @@ import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(useGSAP);
 
 const LOGOS = [
-  { src: "../publish-1.png", w: 180, h: 180 },
-  { src: "../publish-2.png", w: 184, h: 55 },
-  { src: "../publish-3.png", w: 247, h: 56 },
-  { src: "../publish-4.png", w: 180, h: 56 },
-  { src: "../publish-5.png", w: 202, h: 53 },
+  { src: "../publish-1.png" },
+  { src: "../publish-2.png" },
+  { src: "../publish-3.png" },
+  { src: "../publish-4.png" },
+  { src: "../publish-5.png" },
 ];
-
-const DURATION = 20;
 
 export function Publications() {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -21,68 +20,77 @@ export function Publications() {
 
   useGSAP(
     () => {
-      const boxes = gsap.utils.toArray<HTMLElement>(
-        ".pub-box",
-        wrapperRef.current,
-      );
-      const boxWidth = window.innerWidth / 4;
-      const wrapperWidth = boxWidth * boxes.length;
-      const windowWidth = window.innerWidth;
+      const track = trackRef.current;
+      if (!track) return;
 
-      // Offset track left by one slot so wrapping enters from off-screen right
-      gsap.set(trackRef.current, { left: -boxWidth });
-      gsap.set(boxes, { width: boxWidth });
-      gsap.set(boxes, { x: (i) => i * boxWidth });
+      const distance = track.scrollWidth / 2;
 
-      gsap.to(boxes, {
-        duration: DURATION,
+      gsap.set(track, { x: 0 });
+
+      gsap.to(track, {
+        x: -distance,
+        duration: 25,
         ease: "none",
-        x: `-=${wrapperWidth}`,
-        modifiers: {
-          x: gsap.utils.unitize(
-            (x) => parseFloat(x + windowWidth + boxWidth) % wrapperWidth,
-          ),
-        },
         repeat: -1,
+        modifiers: {
+          x: gsap.utils.unitize((x) => parseFloat(x) % distance),
+        },
       });
     },
-    { scope: wrapperRef },
+    { scope: wrapperRef }
   );
 
+  const items = [...LOGOS, ...LOGOS];
+
   return (
-    <div id="press_and_media" className="py-[120px] px-20">
-      <div className="flex justify-between items-end px-10 mb-[226px]">
-        <h1 className="font-semibold font-recoleta text-5xl">
-          Our coffee has <br />
+    <section
+      id="press_and_media"
+      className="py-16 sm:py-20 lg:py-[120px] px-5 sm:px-8 lg:px-20 overflow-hidden"
+    >
+      {/* Header */}
+      <div className="flex flex-col lg:flex-row lg:justify-between lg:items-end gap-6 lg:gap-0 mb-16 sm:mb-20 lg:mb-[226px]">
+        <h1 className="font-semibold font-recoleta text-3xl sm:text-4xl md:text-5xl leading-tight">
+          Our coffee has
+          <br />
           got everybody talking
         </h1>
-        <p className="text-[24px] font-outfit leading-[1.4]">
+
+        <p className="font-outfit text-base sm:text-lg md:text-xl lg:text-[24px] leading-relaxed lg:text-right">
           Featured in India's leading
-          <br /> publications
+          <br />
+          publications
         </p>
       </div>
 
-      {/* h-[100px] gives room for the tallest logo (77px) */}
-      <div
-        ref={wrapperRef}
-        className="w-full overflow-hidden relative h-[100px]"
-      >
-        <div ref={trackRef} className="relative h-full">
-          {LOGOS.map((logo, i) => (
+      {/* MARQUEE */}
+      <div ref={wrapperRef} className="overflow-hidden w-full">
+        <div
+          ref={trackRef}
+          className="flex w-max items-center gap-10 sm:gap-14 md:gap-20"
+        >
+          {items.map((logo, i) => (
             <div
               key={i}
-              className="pub-box absolute top-0 h-full flex items-center justify-center"
+              className="
+                flex-shrink-0
+                flex items-center justify-center
+                w-[140px] sm:w-[170px] md:w-[200px]
+                h-[70px] sm:h-[80px] md:h-[90px]
+              "
             >
               <img
                 src={logo.src}
                 alt=""
-                style={{ width: logo.w, height: logo.h }}
-                className="object-contain"
+                className="
+                  max-h-full
+                  max-w-full
+                  object-contain
+                "
               />
             </div>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

@@ -82,8 +82,8 @@ export const FeelYours = () => {
   return (
     <div id="the_vibe">
       {/* ── Static header ─────────────────────────────────────────────── */}
-      <div className="relative">
-        <h1 className="z-20 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white font-semibold font-recoleta text-5xl text-center">
+      <div className="relative ">
+        <h1 className="z-20 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white font-semibold font-recoleta text-[26px] lg:text-5xl text-center">
           A place that <br />
           feels like yours
         </h1>
@@ -101,7 +101,7 @@ export const FeelYours = () => {
       {/* ── Crossfade slideshow ────────────────────────────────────────── */}
       <div
         ref={sectionRef}
-        className="relative h-[900px] overflow-hidden bg-black"
+        className="relative isolate h-[900px] overflow-hidden bg-black"
       >
         {SLIDES.map((src, i) => (
           <div
@@ -126,7 +126,7 @@ export const FeelYours = () => {
         <button
           onClick={handlePrev}
           aria-label="Previous slide"
-          className="absolute bottom-10 w-[66px] h-[66px] rounded-full bg-white/20 hover:bg-white/40 border border-white/40 flex items-center justify-center cursor-pointer transition-colors"
+          className="absolute bottom-10 w-8 h-8 lg:w-[66px] lg:h-[66px] rounded-full bg-white/20 hover:bg-white/40 border border-white/40 flex items-center justify-center cursor-pointer transition-colors"
           style={{ left: "calc(50% - 25%)", zIndex: 10 }}
         >
           <svg
@@ -149,7 +149,7 @@ export const FeelYours = () => {
         <button
           onClick={handleNext}
           aria-label="Next slide"
-          className="absolute bottom-10 w-[66px] h-[66px] rounded-full bg-white/20 hover:bg-white/40 border border-white/40 flex items-center justify-center cursor-pointer transition-colors"
+          className="absolute bottom-10 w-8 h-8 lg:w-[66px] lg:h-[66px] rounded-full bg-white/20 hover:bg-white/40 border border-white/40 flex items-center justify-center cursor-pointer transition-colors"
           style={{ right: "calc(50% - 25%)", zIndex: 10 }}
         >
           <svg

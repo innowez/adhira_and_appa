@@ -20,34 +20,32 @@ export function FooterSection() {
     <footer className="bg-brand-navy px-4 sm:px-6 lg:px-10 pt-14 lg:pt-20 pb-8 lg:pb-10">
       <div className="max-w-[1361px] mx-auto">
         {/* CTA Section */}
-     <div
-  id="franchise_bridge_CTA"
-  className="text-center mb-10 sm:mb-12 lg:mb-20"
->
-  <p className="text-white font-recoleta font-semibold leading-[1.3] text-[24px] sm:text-[28px] lg:text-[48px] mb-6 lg:mb-10">
-    Bring Adhira & Appa to your city.
-    <br />
-    India's coffee story is still being
-    <br />
-    written. The next chapter
-    <br />
-    could be yours.
-  </p>
+        <div
+          id="franchise_bridge_CTA"
+          className="text-center mb-10 sm:mb-12 lg:mb-20"
+        >
+          <p className="text-white font-recoleta font-semibold leading-[1.3] text-[20px] sm:text-[28px] lg:text-[48px] mb-6 lg:mb-10">
+            Bring Adhira & Appa to your city. <br className="sm:hidden" />
+            India's coffee story is <br className="hidden lg:block " />
+            still being <br className="sm:hidden" /> written. The next chapter{" "}
+            <br className="sm:hidden" />
+            could be yours.
+          </p>
 
-  <div className="flex flex-col items-center gap-4">
-    <span className="text-brand-orange font-outfit tracking-wide text-[14px] sm:text-[18px] lg:text-[24px]">
-      EXPLORE THE OPPORTUNITY
-    </span>
+          <div className="flex flex-col items-center gap-4">
+            <span className="text-brand-orange font-outfit tracking-wide text-[14px] sm:text-[18px] lg:text-[24px]">
+              EXPLORE THE OPPORTUNITY
+            </span>
 
-    <button className="w-[48px] h-[48px] sm:w-[56px] sm:h-[56px] lg:w-[66px] lg:h-[66px] bg-brand-orange rounded-[8px] flex items-center justify-center transition-all duration-300 hover:scale-105">
-      <img
-        src={GO_ICON}
-        alt="Go"
-        className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6"
-      />
-    </button>
-  </div>
-</div>
+            <button className="w-[48px] h-[48px] sm:w-[56px] sm:h-[56px] lg:w-[66px] lg:h-[66px] bg-brand-orange rounded-[8px] flex items-center justify-center transition-all duration-300 hover:scale-105">
+              <img
+                src={GO_ICON}
+                alt="Go"
+                className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6"
+              />
+            </button>
+          </div>
+        </div>
 
         {/* Divider */}
         <div className="w-full h-px bg-white/20 mb-10 lg:mb-20" />

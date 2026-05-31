@@ -92,7 +92,7 @@ export function WhatsNewSection() {
   );
 
   return (
-    <div ref={wrapperRef} className="relative overflow-hidden">
+    <div ref={wrapperRef} className="relative">
       <section ref={sectionRef} className="relative h-[294px] lg:h-[377px]">
         <img
           src={MASK}

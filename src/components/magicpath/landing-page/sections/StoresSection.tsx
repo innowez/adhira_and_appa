@@ -87,7 +87,7 @@ export function StoresSection() {
 
         {/* Swiper */}
         <Swiper
-          pagination={{ clickable: true }}
+          // pagination={{ clickable: true }}
           modules={[Pagination]}
           grabCursor={true}
           watchOverflow={true}
@@ -123,7 +123,6 @@ export function StoresSection() {
           {STORES.map((store) => (
             <SwiperSlide key={store.city}>
               <div className="h-[340px] sm:h-[380px] w-[150px] lg:h-[420px] w-full rounded-[22px] overflow-hidden relative">
-
                 {/* Image */}
                 <div
                   className="absolute inset-0 scale-105"
@@ -146,7 +145,6 @@ export function StoresSection() {
                     {store.desc}
                   </p>
                 </div>
-
               </div>
             </SwiperSlide>
           ))}

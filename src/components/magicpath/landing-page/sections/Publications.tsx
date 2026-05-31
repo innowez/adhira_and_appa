@@ -37,7 +37,7 @@ export function Publications() {
         },
       });
     },
-    { scope: wrapperRef }
+    { scope: wrapperRef },
   );
 
   const items = [...LOGOS, ...LOGOS];
@@ -57,7 +57,7 @@ export function Publications() {
 
         <p className="font-outfit text-base sm:text-lg md:text-xl lg:text-[24px] leading-relaxed lg:text-right">
           Featured in India's leading
-          <br />
+          <br className="hidden lg:block" />
           publications
         </p>
       </div>

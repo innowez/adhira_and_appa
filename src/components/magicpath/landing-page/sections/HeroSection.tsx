@@ -53,6 +53,7 @@ export function HeroSection() {
     <main
       ref={sectionRef}
       className="relative w-full h-[900px] overflow-hidden"
+      id="welcome"
     >
       {/* Background — stays in place */}
       <img
@@ -75,7 +76,6 @@ export function HeroSection() {
 
       {/* Text Section One — moves up and fades out on scroll */}
       <div
-        id="welcome"
         ref={text1Ref}
         className="absolute left-1/2 top-[411px] -translate-x-1/2 -translate-y-1/2 text-center w-full max-w-[662px] px-6"
       >

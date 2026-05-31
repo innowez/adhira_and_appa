@@ -27,11 +27,11 @@ export function CoffeeBrandLanding() {
           <GallerySection />
         </section>
 
-        <FeelYours />
+        {/* <FeelYours />
         <TestimonialsSection />
         <Publications />
         <StoresSection />
-        <FooterSection />
+        <FooterSection /> */}
         <NavDots />
       </div>
     </>

@@ -45,7 +45,7 @@ export function FooterSection() {
           {/* Brand info */}
           <div className="text-white">
             <h2 className="text-[48px] font-recoleta font-semibold mb-4">
-              Adhira & Appa
+              Adhira & Appa suja
             </h2>
             <p className="text-[26px] font-outfit opacity-80 mb-10">
               Happiness through harmony.

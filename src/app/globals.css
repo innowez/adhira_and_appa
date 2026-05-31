@@ -17,26 +17,56 @@
 }
 
 @theme inline {
-  --color-brand-orange: #FF5100;
-  --color-brand-navy: #1E2339;
+  --color-brand-orange: #ff5100;
+  --color-brand-navy: #1e2339;
   --font-recoleta: "Recoleta", serif;
   --font-outfit: "Outfit", sans-serif;
 }
 
 @keyframes bounce-dot {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(15px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(15px);
+  }
 }
 
 .animate-bounce-dot {
   animation: bounce-dot 2s infinite;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
   padding: 0;
+}
+
+#medium {
+  object-fit: cover;
+  /* width: 100%; */
+  /* height: 100%; */
+
+  /* Mobile — cropped */
+  object-view-box: inset(46% 43% 6% 23%);
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  #medium {
+    object-view-box: inset(15% 20% 18% 14%);
+  }
+}
+
+/* Desktop — full image, no crop */
+@media (min-width: 1024px) {
+  #medium {
+    object-view-box: inset(0% 0% 0% 0%);
+  }
 }

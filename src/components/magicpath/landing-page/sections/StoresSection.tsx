@@ -49,7 +49,7 @@ const STORES = [
 
 export function StoresSection() {
   return (
-    <section className="bg-brand-orange/10 py-[120px] px-10">
+    <section id="our_stores" className="bg-brand-orange/10 py-[120px] px-10">
       <div className="max-w-[1360px] mx-auto text-center">
         <h2 className="text-[48px] font-recoleta font-semibold text-brand-navy mb-4">
           The best part of your day <br />

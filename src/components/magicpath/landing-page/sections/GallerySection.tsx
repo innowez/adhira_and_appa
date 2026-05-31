@@ -40,8 +40,8 @@ export function GallerySection() {
       const masterTl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top bottom",  // animation begins as section enters viewport
-          end: "bottom top",    // animation ends as section exits viewport
+          start: "top bottom", // animation begins as section enters viewport
+          end: "bottom top", // animation ends as section exits viewport
           scrub: 2,
         },
       });
@@ -56,31 +56,30 @@ export function GallerySection() {
         masterTl.to(
           filledWrapper,
           { clipPath: "inset(0 0 0% 0)", ease: "none", duration: dur },
-          pos
+          pos,
         );
       }
 
       // Stroke paths — each positioned so it draws when it enters the viewport
       const strokeDefs = [
-        { cls: ".path-p1", top: 453.5,  h: 261 },
-        { cls: ".path-p2", top: 866,    h: 660 },
-        { cls: ".path-p3", top: 1778,   h: 651 },
+        { cls: ".path-p1", top: 453.5, h: 261 },
+        { cls: ".path-p2", top: 866, h: 660 },
+        { cls: ".path-p3", top: 1778, h: 651 },
         { cls: ".path-p4", top: 2560.5, h: 250 },
-        { cls: ".path-p5", top: 3011,   h: 260 },
+        { cls: ".path-p5", top: 3011, h: 260 },
       ] as const;
 
       strokeDefs.forEach(({ cls, top, h }) => {
-        const path =
-          sectionRef.current?.querySelector<SVGPathElement>(cls);
+        const path = sectionRef.current?.querySelector<SVGPathElement>(cls);
         if (!path) return;
         const length = path.getTotalLength();
         gsap.set(path, { strokeDasharray: length, strokeDashoffset: length });
         const pos = (top / scrollRange) * TOTAL;
-        const dur = (h   / scrollRange) * TOTAL;
+        const dur = (h / scrollRange) * TOTAL;
         masterTl.to(
           path,
           { strokeDashoffset: 0, ease: "none", duration: dur },
-          pos
+          pos,
         );
       });
 
@@ -105,46 +104,40 @@ export function GallerySection() {
               start: "top 88%",
               toggleActions: "play none none none",
             },
-          }
+          },
         );
       });
     },
-    { scope: sectionRef }
+    { scope: sectionRef },
   );
 
-  const handleFoodEnter = useCallback(
-    (e: React.MouseEvent<HTMLDivElement>) => {
-      const btn = e.currentTarget.querySelector<HTMLElement>(".discover-btn");
-      const text = e.currentTarget.querySelector<HTMLElement>(".discover-text");
-      if (btn)
-        gsap.to(btn, {
-          scale: 1,
-          opacity: 1,
-          ease: "back.out(1.7)",
-          duration: 0.3,
-          delay: 0.03,
-        });
-      if (text) gsap.to(text, { opacity: 1, duration: 0.2, delay: 0.33 });
-    },
-    []
-  );
+  const handleFoodEnter = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const btn = e.currentTarget.querySelector<HTMLElement>(".discover-btn");
+    const text = e.currentTarget.querySelector<HTMLElement>(".discover-text");
+    if (btn)
+      gsap.to(btn, {
+        scale: 1,
+        opacity: 1,
+        ease: "back.out(1.7)",
+        duration: 0.3,
+        delay: 0.03,
+      });
+    if (text) gsap.to(text, { opacity: 1, duration: 0.2, delay: 0.33 });
+  }, []);
 
-  const handleFoodLeave = useCallback(
-    (e: React.MouseEvent<HTMLDivElement>) => {
-      const btn = e.currentTarget.querySelector<HTMLElement>(".discover-btn");
-      const text = e.currentTarget.querySelector<HTMLElement>(".discover-text");
-      if (text) gsap.to(text, { opacity: 0, duration: 0.2 });
-      if (btn)
-        gsap.to(btn, {
-          scale: 0,
-          opacity: 0,
-          ease: "back.in(1.7)",
-          duration: 0.3,
-          delay: 0.3,
-        });
-    },
-    []
-  );
+  const handleFoodLeave = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const btn = e.currentTarget.querySelector<HTMLElement>(".discover-btn");
+    const text = e.currentTarget.querySelector<HTMLElement>(".discover-text");
+    if (text) gsap.to(text, { opacity: 0, duration: 0.2 });
+    if (btn)
+      gsap.to(btn, {
+        scale: 0,
+        opacity: 0,
+        ease: "back.in(1.7)",
+        duration: 0.3,
+        delay: 0.3,
+      });
+  }, []);
 
   return (
     <div
@@ -159,7 +152,12 @@ export function GallerySection() {
       >
         <div
           className="absolute"
-          style={{ width: "1460px", height: "3600px", left: "-10px", top: "-4px" }}
+          style={{
+            width: "1460px",
+            height: "3600px",
+            left: "-10px",
+            top: "-4px",
+          }}
         >
           <img
             src="https://storage.googleapis.com/storage.magicpath.ai/user/410195596943691776/figma-assets/e72ab957-0669-4d32-b605-b792a057d40a.svg"
@@ -173,7 +171,12 @@ export function GallerySection() {
       {/* ── Decorative filled vector — clip-path reveal (animation target) ── */}
       <div
         className="svg-vector-filled absolute overflow-hidden"
-        style={{ left: "916.18px", top: "6.5px", width: "93px", height: "281px" }}
+        style={{
+          left: "916.18px",
+          top: "6.5px",
+          width: "93px",
+          height: "281px",
+        }}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -312,7 +315,12 @@ export function GallerySection() {
           alt=""
           aria-hidden
           className="absolute"
-          style={{ width: "39.46px", height: "52.57px", left: "120.44px", top: "0.98px" }}
+          style={{
+            width: "39.46px",
+            height: "52.57px",
+            left: "120.44px",
+            top: "0.98px",
+          }}
         />
         <img
           src="https://storage.googleapis.com/storage.magicpath.ai/user/410195596943691776/figma-assets/1215c812-d5c4-4780-86aa-0abc43f12309.svg"
@@ -326,13 +334,23 @@ export function GallerySection() {
           alt=""
           aria-hidden
           className="absolute"
-          style={{ width: "59.94px", height: "15.49px", left: "0px", top: "113.04px" }}
+          style={{
+            width: "59.94px",
+            height: "15.49px",
+            left: "0px",
+            top: "113.04px",
+          }}
         />
       </section>
 
       <section
         className="absolute"
-        style={{ width: "378.96px", height: "200px", left: "189.04px", top: "644px" }}
+        style={{
+          width: "378.96px",
+          height: "200px",
+          left: "189.04px",
+          top: "644px",
+        }}
       >
         <h2
           className="absolute text-white text-center m-0"
@@ -360,7 +378,12 @@ export function GallerySection() {
 
       <section
         className="absolute"
-        style={{ width: "384px", height: "178px", left: "478px", top: "1540px" }}
+        style={{
+          width: "384px",
+          height: "178px",
+          left: "478px",
+          top: "1540px",
+        }}
       >
         <h2
           className="absolute left-0 top-0 text-white text-center m-0"
@@ -394,13 +417,23 @@ export function GallerySection() {
           alt=""
           aria-hidden
           className="absolute"
-          style={{ width: "70.97px", height: "53.23px", left: "259.23px", top: "115px" }}
+          style={{
+            width: "70.97px",
+            height: "53.23px",
+            left: "259.23px",
+            top: "115px",
+          }}
         />
       </section>
 
       <section
         className="absolute"
-        style={{ width: "469.04px", height: "193px", left: "226px", top: "2390px" }}
+        style={{
+          width: "469.04px",
+          height: "193px",
+          left: "226px",
+          top: "2390px",
+        }}
       >
         <img
           src="https://storage.googleapis.com/storage.magicpath.ai/user/410195596943691776/figma-assets/f4f6c214-b7d7-4a8a-bbde-dcce781cfe8a.svg"
@@ -434,13 +467,23 @@ export function GallerySection() {
         data-from-x="20"
         data-from-rot="15"
         className="food-item absolute object-cover"
-        style={{ width: "255px", height: "255px", left: "1068px", top: "393px" }}
+        style={{
+          width: "255px",
+          height: "255px",
+          left: "1068px",
+          top: "393px",
+        }}
       />
 
       {/* 0meal – large hero plate (hover) */}
       <div
         className="absolute cursor-pointer"
-        style={{ width: "459.87px", height: "466.5px", left: "276px", top: "140.69px" }}
+        style={{
+          width: "459.87px",
+          height: "466.5px",
+          left: "276px",
+          top: "140.69px",
+        }}
         onMouseEnter={handleFoodEnter}
         onMouseLeave={handleFoodLeave}
       >
@@ -461,7 +504,12 @@ export function GallerySection() {
         data-from-x="-15"
         data-from-rot="-10"
         className="food-item absolute object-cover"
-        style={{ width: "153.86px", height: "202.9px", left: "187px", top: "171px" }}
+        style={{
+          width: "153.86px",
+          height: "202.9px",
+          left: "187px",
+          top: "171px",
+        }}
       />
 
       {/* 1meal – dish detail right (hover) */}
@@ -494,7 +542,12 @@ export function GallerySection() {
       {/* 2meal – grid left (hover) */}
       <div
         className="absolute cursor-pointer"
-        style={{ width: "376px", height: "381px", left: "256px", top: "1099px" }}
+        style={{
+          width: "376px",
+          height: "381px",
+          left: "256px",
+          top: "1099px",
+        }}
         onMouseEnter={handleFoodEnter}
         onMouseLeave={handleFoodLeave}
       >
@@ -511,7 +564,12 @@ export function GallerySection() {
       {/* 3meal – grid right (hover) */}
       <div
         className="absolute cursor-pointer"
-        style={{ width: "240px", height: "245px", left: "966px", top: "1108px" }}
+        style={{
+          width: "240px",
+          height: "245px",
+          left: "966px",
+          top: "1108px",
+        }}
         onMouseEnter={handleFoodEnter}
         onMouseLeave={handleFoodLeave}
       >
@@ -532,7 +590,12 @@ export function GallerySection() {
         data-from-x="15"
         data-from-rot="10"
         className="food-item absolute object-cover"
-        style={{ width: "142.97px", height: "159.44px", left: "664px", top: "1219px" }}
+        style={{
+          width: "142.97px",
+          height: "159.44px",
+          left: "664px",
+          top: "1219px",
+        }}
       />
 
       {/* ada4 – partial overflow left edge */}
@@ -575,7 +638,12 @@ export function GallerySection() {
       {/* 5meal – large left plate (hover) */}
       <div
         className="absolute cursor-pointer"
-        style={{ width: "357px", height: "366px", left: "215px", top: "1899px" }}
+        style={{
+          width: "357px",
+          height: "366px",
+          left: "215px",
+          top: "1899px",
+        }}
         onMouseEnter={handleFoodEnter}
         onMouseLeave={handleFoodLeave}
       >
@@ -597,13 +665,23 @@ export function GallerySection() {
         data-from-x="15"
         data-from-rot="10"
         className="food-item absolute object-cover"
-        style={{ width: "146.56px", height: "148.27px", left: "788.72px", top: "2043.37px" }}
+        style={{
+          width: "146.56px",
+          height: "148.27px",
+          left: "788.72px",
+          top: "2043.37px",
+        }}
       />
 
       {/* 6meal – right side lower (hover) */}
       <div
         className="absolute cursor-pointer"
-        style={{ width: "312px", height: "315px", left: "937px", top: "2206px" }}
+        style={{
+          width: "312px",
+          height: "315px",
+          left: "937px",
+          top: "2206px",
+        }}
         onMouseEnter={handleFoodEnter}
         onMouseLeave={handleFoodLeave}
       >
@@ -624,7 +702,12 @@ export function GallerySection() {
         data-from-x="-15"
         data-from-rot="-10"
         className="food-item absolute object-contain"
-        style={{ width: "100px", height: "69px", left: "115px", top: "2752.96px" }}
+        style={{
+          width: "100px",
+          height: "69px",
+          left: "115px",
+          top: "2752.96px",
+        }}
       />
       <img
         src="https://storage.googleapis.com/storage.magicpath.ai/user/410195596943691776/figma-assets/c260c276-f4d7-4928-bba3-c563a6b20f8c.png"
@@ -632,13 +715,23 @@ export function GallerySection() {
         data-from-x="-10"
         data-from-rot="-8"
         className="food-item absolute object-contain"
-        style={{ width: "92.9px", height: "93.6px", left: "120.59px", top: "2652px" }}
+        style={{
+          width: "92.9px",
+          height: "93.6px",
+          left: "120.59px",
+          top: "2652px",
+        }}
       />
 
       {/* 7meal – large collage group left (hover) */}
       <div
         className="absolute cursor-pointer"
-        style={{ width: "530.45px", height: "396.59px", left: "295px", top: "2740px" }}
+        style={{
+          width: "530.45px",
+          height: "396.59px",
+          left: "295px",
+          top: "2740px",
+        }}
         onMouseEnter={handleFoodEnter}
         onMouseLeave={handleFoodLeave}
       >
@@ -655,7 +748,12 @@ export function GallerySection() {
       {/* ada8 – large plate right (hover) */}
       <div
         className="absolute cursor-pointer"
-        style={{ width: "400.67px", height: "482.12px", left: "939.07px", top: "2795.88px" }}
+        style={{
+          width: "400.67px",
+          height: "482.12px",
+          left: "939.07px",
+          top: "2795.88px",
+        }}
         onMouseEnter={handleFoodEnter}
         onMouseLeave={handleFoodLeave}
       >
@@ -676,7 +774,12 @@ export function GallerySection() {
         data-from-x="-15"
         data-from-rot="-10"
         className="food-item absolute object-cover"
-        style={{ width: "180.89px", height: "200.93px", left: "136px", top: "3193px" }}
+        style={{
+          width: "180.89px",
+          height: "200.93px",
+          left: "136px",
+          top: "3193px",
+        }}
       />
 
       {/* ── CTA: See the Full Menu ── */}

@@ -58,22 +58,13 @@ const RED: ImageItem[] = [
 ];
 
 const PANELS = [
-  {
-    images: ORANGE,
-    text: "Deeply rooted in tradition. <br/>Gentle on the planet.",
-  },
-  {
-    images: NAVY,
-    text: "India grows some of the finest coffee <br/>in the world.",
-  },
+  { images: ORANGE, text: "Deeply rooted in tradition. Gentle on the planet." },
+  { images: NAVY, text: "India grows some of the finest coffee in the world." },
   {
     images: YELLOW,
-    text: "Most of it leaves before it reaches you. <br/>Ours never does.",
+    text: "Most of it leaves before it reaches you. Ours never does.",
   },
-  {
-    images: RED,
-    text: "Ethically sourced from Kerala, Karnataka, and Tamil Nadu. <br />Rooted here. Roasted here. Yours.",
-  },
+  { images: RED, text: "Every sip carries the story of where it came from." },
 ];
 
 // Panel 1 sits on top (z 8), panel 4 at the bottom (z 2) — mirrors reference CSS z-index ordering
@@ -332,21 +323,18 @@ export function BehindEveryCupSection() {
         >
           <div
             data-el="title"
-            className="w-full max-w-[920px] text-white text-2xl lg:text-[40px] font-recoleta font-semibold leading-[1.35] text-center mb-6 lg:mb-[100px]"
+            className="w-full max-w-[920px] text-white text-[40px] font-recoleta font-semibold leading-[1.35] text-center mb-[100px]"
           >
             Our Story Behind Every Cup
           </div>
 
-          <div
-            data-el="imgs"
-            className="flex flex-col lg:flex-row gap-0 items-center lg:gap-10 mb-6 lg:mb-[100px]"
-          >
+          <div data-el="imgs" className="flex gap-10 mb-[100px]">
             {panel.images.map((img) => (
               <img
                 key={img.alt}
                 src={img.src}
                 alt={img.alt}
-                className="w-[120px] h-[120px] lg:w-[230px] lg:h-[230px] object-contain object-center"
+                className="w-[230px] h-[230px] object-contain object-center"
                 style={
                   img.shadow
                     ? { filter: "drop-shadow(-7px 10px 25px rgba(0,0,0,0.25))" }
@@ -358,9 +346,10 @@ export function BehindEveryCupSection() {
 
           <p
             data-el="text"
-            className="text-white text-base lg:text-[28px] font-outfit text-center"
-            dangerouslySetInnerHTML={{ __html: panel.text }}
-          />
+            className="text-white text-[28px] font-outfit text-center"
+          >
+            {panel.text}
+          </p>
         </div>
       ))}
     </div>

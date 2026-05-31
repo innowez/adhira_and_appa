@@ -9,13 +9,13 @@ const CROSSFADE_S = 1;
 
 export const FeelYours = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const slideRefs  = useRef<(HTMLDivElement | null)[]>([]);
+  const slideRefs = useRef<(HTMLDivElement | null)[]>([]);
   const currentRef = useRef(0);
-  const timerRef   = useRef<ReturnType<typeof setInterval> | null>(null);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   // Crossfade: bring next slide above current, fade in, then relayer
   const goToSlide = useCallback((next: number) => {
-    const slides  = slideRefs.current;
+    const slides = slideRefs.current;
     const current = currentRef.current;
     if (next === current || !slides[next] || !slides[current]) return;
 
@@ -26,7 +26,7 @@ export const FeelYours = () => {
       ease: "none",
       onComplete: () => {
         gsap.set(slides[current], { zIndex: 1, opacity: 0 });
-        gsap.set(slides[next],    { zIndex: 2 });
+        gsap.set(slides[next], { zIndex: 2 });
       },
     });
     currentRef.current = next;
@@ -54,14 +54,16 @@ export const FeelYours = () => {
       ([entry]) => {
         entry.isIntersecting ? startSlideshow() : stopSlideshow();
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
     const sec = sectionRef.current;
     if (sec) observer.observe(sec);
     return () => {
       observer.disconnect();
       stopSlideshow();
-      slideRefs.current.forEach((el) => { if (el) gsap.killTweensOf(el); });
+      slideRefs.current.forEach((el) => {
+        if (el) gsap.killTweensOf(el);
+      });
     };
   }, [startSlideshow, stopSlideshow]);
 
@@ -78,7 +80,7 @@ export const FeelYours = () => {
   }, [goToSlide, startSlideshow, stopSlideshow]);
 
   return (
-    <>
+    <div id="the_vibe">
       {/* ── Static header ─────────────────────────────────────────────── */}
       <div className="relative">
         <h1 className="z-20 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white font-semibold font-recoleta text-5xl text-center">
@@ -88,7 +90,8 @@ export const FeelYours = () => {
         <div
           className="absolute z-10 w-full h-full"
           style={{
-            background: "linear-gradient(0deg, rgba(0,0,0,0.2), rgba(0,0,0,0.2))",
+            background:
+              "linear-gradient(0deg, rgba(0,0,0,0.2), rgba(0,0,0,0.2))",
             backgroundBlendMode: "normal, hue, normal, normal",
           }}
         />
@@ -96,12 +99,16 @@ export const FeelYours = () => {
       </div>
 
       {/* ── Crossfade slideshow ────────────────────────────────────────── */}
-      <div ref={sectionRef} className="relative h-[900px] overflow-hidden bg-black">
-
+      <div
+        ref={sectionRef}
+        className="relative h-[900px] overflow-hidden bg-black"
+      >
         {SLIDES.map((src, i) => (
           <div
             key={i}
-            ref={(el) => { slideRefs.current[i] = el; }}
+            ref={(el) => {
+              slideRefs.current[i] = el;
+            }}
             className="absolute inset-0"
             style={{ opacity: i === 0 ? 1 : 0, zIndex: i === 0 ? 2 : 1 }}
           >
@@ -122,8 +129,19 @@ export const FeelYours = () => {
           className="absolute bottom-10 w-[66px] h-[66px] rounded-full bg-white/20 hover:bg-white/40 border border-white/40 flex items-center justify-center cursor-pointer transition-colors"
           style={{ left: "calc(50% - 25%)", zIndex: 10 }}
         >
-          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth="2">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+          <svg
+            width="24"
+            height="24"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="white"
+            strokeWidth="2"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15 19l-7-7 7-7"
+            />
           </svg>
         </button>
 
@@ -134,12 +152,22 @@ export const FeelYours = () => {
           className="absolute bottom-10 w-[66px] h-[66px] rounded-full bg-white/20 hover:bg-white/40 border border-white/40 flex items-center justify-center cursor-pointer transition-colors"
           style={{ right: "calc(50% - 25%)", zIndex: 10 }}
         >
-          <svg width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="white" strokeWidth="2">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+          <svg
+            width="24"
+            height="24"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="white"
+            strokeWidth="2"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M9 5l7 7-7 7"
+            />
           </svg>
         </button>
-
       </div>
-    </>
+    </div>
   );
 };

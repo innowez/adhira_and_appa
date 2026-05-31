@@ -50,7 +50,7 @@ export function Publications() {
   );
 
   return (
-    <div className="py-[120px] px-20">
+    <div id="press_and_media" className="py-[120px] px-20">
       <div className="flex justify-between items-end px-10 mb-[226px]">
         <h1 className="font-semibold font-recoleta text-5xl">
           Our coffee has <br />

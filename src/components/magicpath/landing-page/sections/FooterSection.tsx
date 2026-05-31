@@ -51,51 +51,119 @@ export function FooterSection() {
         <div className="w-full h-px bg-white/20 mb-10 lg:mb-20" />
 
         {/* MOBILE FOOTER */}
-        <div className="block lg:hidden">
-          <div className="flex justify-between items-start mb-8">
-            <div>
-              <h2 className="text-white font-recoleta font-semibold text-[34px] leading-none">
-                Adhira & Appa
-              </h2>
+      <div className="block lg:hidden">
+  <div className="flex justify-between items-start mb-8">
+    <div>
+      <h2 className="text-white font-recoleta font-semibold text-[34px] leading-none">
+        Adhira & Appa
+      </h2>
 
-              <p className="text-white/90 font-outfit text-[18px] mt-4">
-                Happiness through harmony.
-              </p>
-            </div>
+      <p className="text-white/90 font-outfit text-[18px] mt-4">
+        Happiness through harmony.
+      </p>
+    </div>
 
-            <img
-              src={LOGO_FOOTER}
-              alt="Adhira & Appa Logo"
-              className="w-[82px] h-auto object-contain cursor-pointer"
-              onClick={() =>
-                window.scrollTo({
-                  top: 0,
-                  behavior: "smooth",
-                })
-              }
-            />
-          </div>
+    <img
+      src={LOGO_FOOTER}
+      alt="Adhira & Appa Logo"
+      className="w-[82px] h-auto object-contain cursor-pointer"
+      onClick={() =>
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        })
+      }
+    />
+  </div>
 
-          <nav className="flex flex-col gap-4 mb-10">
-            {NAV_LINKS.map((link) => (
-              <button
-                key={link}
-                className="bg-transparent border-none p-0 text-left text-white font-outfit text-[18px] cursor-pointer hover:text-brand-orange transition-colors"
-              >
-                {link}
-              </button>
-            ))}
-          </nav>
+  <nav className="flex flex-col gap-4 mb-10">
+    {NAV_LINKS.map((link) => (
+      <button
+        key={link}
+        className="bg-transparent border-none p-0 text-left text-white font-outfit text-[18px] cursor-pointer hover:text-brand-orange transition-colors"
+      >
+        {link}
+      </button>
+    ))}
+  </nav>
 
-          <div className="w-full h-px bg-white/20 mb-8" />
+  <div className="w-full h-px bg-white/20 mb-8" />
 
-          <div className="text-white font-outfit space-y-3">
-            <p className="text-[16px] break-all">
-              hello@adhiraandappacoffee.com
-            </p>
-            <p className="text-[16px]">+91 86557 79836</p>
-          </div>
-        </div>
+  <div className="text-white font-outfit space-y-3">
+    <p className="text-[16px] break-all">
+      hello@adhiraandappacoffee.com
+    </p>
+    <p className="text-[16px]">+91 86557 79836</p>
+
+    {/* Social Icons + Terms in same line */}
+    <div className="flex items-center justify-between mt-6">
+      
+      {/* Icons */}
+      <div className="flex items-center gap-5">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="36"
+          height="36"
+          fill="none"
+          viewBox="0 0 36 36"
+          className="cursor-pointer shrink-0"
+        >
+          <path
+            fill="#FF5100"
+            d="M12.87 14.502c.9 0 1.62-.732 1.62-1.62s-.731-1.62-1.62-1.62-1.62.731-1.62 1.62.731 1.62 1.62 1.62m3.161 1.226v9.022h2.79v-4.454c0-1.182.225-2.318 1.676-2.318 1.452 0 1.452 1.35 1.452 2.385v4.387h2.801V19.8c0-2.43-.517-4.297-3.352-4.297-1.362 0-2.273.742-2.644 1.451h-.034v-1.237h-2.677zm-4.556 0h2.801v9.022h-2.801z"
+          />
+        </svg>
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="36"
+          height="36"
+          fill="none"
+          viewBox="0 0 36 36"
+          className="cursor-pointer shrink-0"
+        >
+          <path
+            stroke="#FF5100"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="1.5"
+            d="M21 11.251c2.07 0 3.75 1.68 3.75 3.75v6c0 2.07-1.68 3.75-3.75 3.75h-6c-2.07 0-3.75-1.68-3.75-3.75v-6c0-2.07 1.68-3.75 3.75-3.75h6"
+          />
+          <path
+            stroke="#FF5100"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="1.5"
+            d="M18 15.001a3 3 0 1 1 0 6 3 3 0 1 1 0-6"
+          />
+          <path
+            fill="#FF5100"
+            d="M21.75 15.376a1.125 1.125 0 1 0 0-2.25 1.125 1.125 0 0 0 0 2.25"
+          />
+        </svg>
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="36"
+          height="36"
+          fill="none"
+          viewBox="0 0 36 36"
+          className="cursor-pointer shrink-0"
+        >
+          <path
+            fill="#FF5100"
+            d="M18 12.001c.641 0 1.299.017 1.936.043l.753.037.721.042.675.046.617.048a2.85 2.85 0 0 1 2.62 2.567l.03.319.056.683c.053.707.092 1.478.092 2.215s-.039 1.508-.091 2.215l-.057.683-.03.319a2.85 2.85 0 0 1-2.621 2.567l-.615.047-.675.047-.722.043-.753.035a47 47 0 0 1-1.936.044 47 47 0 0 1-1.936-.044l-.754-.035-.72-.043-.675-.047-.617-.047a2.85 2.85 0 0 1-2.62-2.567l-.03-.319-.056-.683a31 31 0 0 1-.092-2.215c0-.737.039-1.508.091-2.216l.057-.682.03-.319a2.85 2.85 0 0 1 2.62-2.567l.615-.048.675-.046.722-.042.753-.037A46 46 0 0 1 18 12.002m0 1.5c-.619 0-1.256.017-1.875.042l-.733.035-.705.042-.661.045-.606.047a1.35 1.35 0 0 0-1.25 1.217c-.088.907-.17 2.036-.17 3.072s.082 2.165.17 3.072a1.35 1.35 0 0 0 1.25 1.217l.606.047.661.045.705.042.733.035c.62.026 1.256.042 1.875.042s1.256-.017 1.875-.042l.733-.035.705-.041.661-.046.606-.047a1.35 1.35 0 0 0 1.25-1.217c.088-.907.17-2.035.17-3.072a33 33 0 0 0-.17-3.072 1.35 1.35 0 0 0-1.25-1.217l-.606-.047-.661-.045-.704-.042-.734-.035q-.937-.04-1.875-.042m-1.5 2.681a.45.45 0 0 1 .614-.419l.061.03 3.15 1.818a.45.45 0 0 1 .064.735l-.064.045-3.15 1.819a.45.45 0 0 1-.67-.323l-.005-.067z"
+          />
+        </svg>
+      </div>
+
+      {/* Terms */}
+      <p className="text-[16px] whitespace-nowrap">
+        Terms & Conditions
+      </p>
+    </div>
+  </div>
+</div>
 
         {/* DESKTOP FOOTER */}
         <div
@@ -103,21 +171,80 @@ export function FooterSection() {
           className="hidden lg:flex justify-between items-start gap-12"
         >
           {/* Brand */}
-          <div className="text-white">
-            <h2 className="text-[48px] font-recoleta font-semibold mb-4">
-              Adhira & Appa
-            </h2>
+        <div className="text-white">
+  <h2 className="text-[48px] font-recoleta font-semibold mb-4">
+    Adhira & Appa
+  </h2>
 
-            <p className="text-[26px] font-outfit opacity-80 mb-10">
-              Happiness through harmony.
-            </p>
+  <p className="text-[26px] font-outfit opacity-80 mb-10">
+    Happiness through harmony.
+  </p>
 
-            <p className="text-[20px] font-outfit leading-[1.7]">
-              hello@adhiraandappacoffee.com
-              <br />
-              +91 86557 79836
-            </p>
-          </div>
+  <p className="text-[20px] font-outfit leading-[1.7] mb-8">
+    hello@adhiraandappacoffee.com
+    <br />
+    +91 86557 79836
+  </p>
+
+  {/* Social Icons */}
+  <div className="flex items-center gap-3">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="36"
+      height="36"
+      fill="none"
+      viewBox="0 0 36 36"
+      className="cursor-pointer shrink-0"
+    >
+      <path
+        fill="#FF5100"
+        d="M12.87 14.502c.9 0 1.62-.732 1.62-1.62s-.731-1.62-1.62-1.62-1.62.731-1.62 1.62.731 1.62 1.62 1.62m3.161 1.226v9.022h2.79v-4.454c0-1.182.225-2.318 1.676-2.318 1.452 0 1.452 1.35 1.452 2.385v4.387h2.801V19.8c0-2.43-.517-4.297-3.352-4.297-1.362 0-2.273.742-2.644 1.451h-.034v-1.237h-2.677zm-4.556 0h2.801v9.022h-2.801z"
+      />
+    </svg>
+
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="36"
+      height="36"
+      fill="none"
+      viewBox="0 0 36 36"
+      className="cursor-pointer shrink-0"
+    >
+      <path
+        stroke="#FF5100"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.5"
+        d="M21 11.251c2.07 0 3.75 1.68 3.75 3.75v6c0 2.07-1.68 3.75-3.75 3.75h-6c-2.07 0-3.75-1.68-3.75-3.75v-6c0-2.07 1.68-3.75 3.75-3.75h6"
+      />
+      <path
+        stroke="#FF5100"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.5"
+        d="M18 15.001a3 3 0 1 1 0 6 3 3 0 1 1 0-6"
+      />
+      <path
+        fill="#FF5100"
+        d="M21.75 15.376a1.125 1.125 0 1 0 0-2.25 1.125 1.125 0 0 0 0 2.25"
+      />
+    </svg>
+
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="36"
+      height="36"
+      fill="none"
+      viewBox="0 0 36 36"
+      className="cursor-pointer shrink-0"
+    >
+      <path
+        fill="#FF5100"
+        d="M18 12.001c.641 0 1.299.017 1.936.043l.753.037.721.042.675.046.617.048a2.85 2.85 0 0 1 2.62 2.567l.03.319.056.683c.053.707.092 1.478.092 2.215s-.039 1.508-.091 2.215l-.057.683-.03.319a2.85 2.85 0 0 1-2.621 2.567l-.615.047-.675.047-.722.043-.753.035a47 47 0 0 1-1.936.044 47 47 0 0 1-1.936-.044l-.754-.035-.72-.043-.675-.047-.617-.047a2.85 2.85 0 0 1-2.62-2.567l-.03-.319-.056-.683a31 31 0 0 1-.092-2.215c0-.737.039-1.508.091-2.216l.057-.682.03-.319a2.85 2.85 0 0 1 2.62-2.567l.615-.048.675-.046.722-.042.753-.037A46 46 0 0 1 18 12.002m0 1.5c-.619 0-1.256.017-1.875.042l-.733.035-.705.042-.661.045-.606.047a1.35 1.35 0 0 0-1.25 1.217c-.088.907-.17 2.036-.17 3.072s.082 2.165.17 3.072a1.35 1.35 0 0 0 1.25 1.217l.606.047.661.045.705.042.733.035c.62.026 1.256.042 1.875.042s1.256-.017 1.875-.042l.733-.035.705-.041.661-.046.606-.047a1.35 1.35 0 0 0 1.25-1.217c.088-.907.17-2.035.17-3.072a33 33 0 0 0-.17-3.072 1.35 1.35 0 0 0-1.25-1.217l-.606-.047-.661-.045-.704-.042-.734-.035q-.937-.04-1.875-.042m-1.5 2.681a.45.45 0 0 1 .614-.419l.061.03 3.15 1.818a.45.45 0 0 1 .064.735l-.064.045-3.15 1.819a.45.45 0 0 1-.67-.323l-.005-.067z"
+      />
+    </svg>
+  </div>
+</div>
 
           {/* Navigation */}
           <nav className="flex flex-col gap-4">

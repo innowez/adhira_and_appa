@@ -56,7 +56,7 @@ export function TestimonialsSection() {
           </h2>
 
           <div className="flex justify-between">
-            <h2 className="text-white text-base lg:text-[28px]">
+            <h2 className="text-white text-base lg:text-[28px] lg:mr-10">
               From those who walk-in
             </h2>
             <span className="text-white font-outfit text-[18px] sm:text-[22px] lg:text-[26px]">
@@ -84,6 +84,10 @@ export function TestimonialsSection() {
             <p className="text-white text-[24px] font-outfit leading-[1.4]">
               {current.text}
             </p>
+              <img
+              src={QUOTE_ICON}
+              alt="" aria-hidden className="mb-6 mx-auto rotate-180 mt-6"
+            />
           </div>
 
           <button

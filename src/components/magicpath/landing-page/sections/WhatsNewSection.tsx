@@ -92,8 +92,14 @@ export function WhatsNewSection() {
   );
 
   return (
-    <div ref={wrapperRef} className="relative">
-      <section ref={sectionRef} className="relative h-[294px] lg:h-[377px]">
+    <div
+      ref={wrapperRef}
+      className="relative overflow-hidden lg:overflow-visible "
+    >
+      <section
+        ref={sectionRef}
+        className="relative h-[294px] lg:h-[377px] bg-brand-orange"
+      >
         <img
           src={MASK}
           alt=""
@@ -107,28 +113,28 @@ export function WhatsNewSection() {
           src={COFEE_BEAN_3}
           alt=""
           aria-hidden
-          className="object-contain absolute z-20 lg:left-[560px] lg:top-[-54px] lg:w-[181.99px] lg:h-[157.77px] w-[64px] h-[85px]"
+          className="object-contain absolute z-20 top-[22px] left-[31px] w-[56px] h-[75px] lg:top-[-54px] lg:left-[560px] lg:w-[181.99px] lg:h-[157.77px]"
         />
         <img
           ref={bean1Ref}
           src={COFEE_BEAN_1}
           alt=""
           aria-hidden
-          className="object-contain absolute z-20 left-[230px] top-[15px] lg:w-[181.993px] lg:h-[157.766px] w-[56px] h-[74px] "
+          className="object-contain absolute z-20 top-[6.9px] left-[85px] w-[64px] h-[85px] lg:top-[15px] lg:left-[230px] lg:w-[181.993px] lg:h-[157.766px]"
         />
         <img
           ref={bean2Ref}
           src={COFEE_BEAN_2}
           alt=""
           aria-hidden
-          className="object-contain absolute z-20 left-[961px] top-[112px] lg:w-[227.228px] lg:h-[181.615px] w-[58px] h-[77px] "
+          className="object-contain absolute z-20 top-[115px] left-[303px] w-[58px] h-[78px] lg:top-[112px] lg:left-[961px] lg:w-[227.228px] lg:h-[181.615px]"
         />
         <img
           ref={ombleteRef}
           src={OMBLETE}
           alt=""
           aria-hidden
-          className="object-contain absolute z-20 left-[770px] top-[256.5px] lg:w-[167px] lg:h-[171px] w-[79px] h-[81px] "
+          className="object-contain absolute z-20 top-[191px] left-[202px] w-[79px] h-[81px] lg:top-[256.5px] lg:left-[770px] lg:w-[167px] lg:h-[171px]"
         />
 
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 text-white">

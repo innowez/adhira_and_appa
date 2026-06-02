@@ -18,7 +18,7 @@ export function HeroSection() {
 
   useGSAP(
     () => {
-      gsap.set(text2Ref.current, { y: 500, opacity: 1 });
+      gsap.set(text2Ref.current, { y: 500, opacity: 0 });
       gsap.set(darkenRef.current, { opacity: 0 });
 
       const tl = gsap.timeline({
@@ -38,7 +38,11 @@ export function HeroSection() {
         0,
       )
         // Text 2 rises from bottom, overlapping text 1 exit by 20%
-        .to(text2Ref.current, { y: 0, ease: "none", duration: 0.6 }, 0.4)
+        .to(
+          text2Ref.current,
+          { y: 0, ease: "none", duration: 0.6, opacity: 1 },
+          0.4,
+        )
         // Overlay darkens as text 2 appears
         .to(
           darkenRef.current,
@@ -52,7 +56,7 @@ export function HeroSection() {
   return (
     <main
       ref={sectionRef}
-      className="relative w-full h-[900px] overflow-hidden"
+      className="relative w-full h-screen overflow-hidden"
       id="welcome"
     >
       {/* Background — stays in place */}
@@ -91,17 +95,17 @@ export function HeroSection() {
       {/* Text Section Two — rises up and fades in on scroll */}
       <div
         ref={text2Ref}
-        className="absolute left-1/2 top-[411px] -translate-x-1/2 -translate-y-1/2 text-center w-full max-w-[729px] px-6"
+        className="absolute left-1/2 top-[40%] -translate-x-1/2 -translate-y-1/2 text-center w-full max-w-[729px] px-6"
       >
-        <p className="text-white text-2xl lg:text-[36px] font-recoleta leading-[1.4] mb-10">
+        <p className="text-white text-base lg:text-[36px] font-recoleta leading-[1.4] mb-4 lg:mb-10">
           Some moments aren't planned. They just happen— between sips, across
           tables, in time you didn't mean to spend.
         </p>
-        <p className="text-white text-2xl lg:text-[36px] font-recoleta leading-[1.4] mb-10">
+        <p className="text-white text-base lg:text-[36px] font-recoleta leading-[1.4] mb-4 lg:mb-10">
           At Adhira & Appa, those are the moments that matter. Where you can
           stay a little longer, and feel like you belong.
         </p>
-        <p className="text-white text-2xl lg:text-[36px] font-recoleta font-semibold">
+        <p className="text-white text-base lg:text-[36px] font-recoleta font-semibold">
           Moments That Matter
         </p>
       </div>

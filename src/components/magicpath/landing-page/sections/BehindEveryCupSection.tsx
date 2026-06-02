@@ -147,7 +147,7 @@ export function BehindEveryCupSection() {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: () => "+=" + window.innerHeight * 5,
+          end: () => "+=" + window.innerHeight * 3,
           scrub: 1,
           pin: true,
         },

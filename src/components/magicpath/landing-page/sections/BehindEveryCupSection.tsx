@@ -147,142 +147,47 @@ export function BehindEveryCupSection() {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: () => "+=" + window.innerHeight * 3,
-          scrub: 1,
+          end: () => "+=" + window.innerHeight * 2,
+          scrub: 0.5,
           pin: true,
+          anticipatePin: 1,
         },
       });
 
-      // Panel 1 exit + BG orange→navy + Panel 2 enter
-      tl.to(
-        "[data-panel='1'] [data-el='title']",
-        { opacity: 0, x: -100, ease: "power3.in", duration: 0.8 },
-        1,
-      )
-        .to(
-          "[data-panel='1'] [data-el='imgs'] img",
-          { y: 300, opacity: 0, ease: "back.in", stagger: -0.1, duration: 0.5 },
-          1,
-        )
-        .to(
-          "[data-panel='1'] [data-el='text']",
-          { opacity: 0, x: 100, ease: "power3.in", duration: 0.8 },
-          1,
-        )
-        .to(bg1Ref.current, { yPercent: 100, ease: "none", duration: 1 }, 1)
-        .to(bg2Ref.current, { yPercent: 0, ease: "none", duration: 1 }, 1)
-        .to(
-          "[data-panel='2'] [data-el='title']",
-          { opacity: 1, x: 0, ease: "power3.out", duration: 0.8 },
-          1.5,
-        )
-        .to(
-          "[data-panel='2'] [data-el='imgs'] img",
-          { y: 0, opacity: 1, ease: "back.out", stagger: -0.1, duration: 0.5 },
-          1.5,
-        )
-        .to(
-          "[data-panel='2'] [data-el='text']",
-          { opacity: 1, x: 0, ease: "power3.out", duration: 0.8 },
-          1.5,
-        );
+      // Panel 1 exit + BG orange→navy + Panel 2 enter (0 → 1.0)
+      tl.to("[data-panel='1'] [data-el='title']", { opacity: 0, x: -100, ease: "power3.in", duration: 0.5 }, 0)
+        .to("[data-panel='1'] [data-el='imgs'] img", { y: 200, opacity: 0, ease: "back.in", stagger: -0.06, duration: 0.35 }, 0)
+        .to("[data-panel='1'] [data-el='text']", { opacity: 0, x: 100, ease: "power3.in", duration: 0.5 }, 0)
+        .to(bg1Ref.current, { yPercent: 100, ease: "none", duration: 0.7 }, 0)
+        .to(bg2Ref.current, { yPercent: 0, ease: "none", duration: 0.7 }, 0)
+        .to("[data-panel='2'] [data-el='title']", { opacity: 1, x: 0, ease: "power3.out", duration: 0.5 }, 0.5)
+        .to("[data-panel='2'] [data-el='imgs'] img", { y: 0, opacity: 1, ease: "back.out", stagger: -0.06, duration: 0.35 }, 0.5)
+        .to("[data-panel='2'] [data-el='text']", { opacity: 1, x: 0, ease: "power3.out", duration: 0.5 }, 0.5);
 
-      // Panel 2 exit + BG navy→yellow + Panel 3 enter
-      tl.to(
-        "[data-panel='2'] [data-el='title']",
-        { opacity: 0, x: -100, ease: "power3.in", duration: 0.8 },
-        3.5,
-      )
-        .to(
-          "[data-panel='2'] [data-el='imgs'] img",
-          { x: 300, opacity: 0, ease: "back.in", stagger: -0.1, duration: 0.5 },
-          3.5,
-        )
-        .to(
-          "[data-panel='2'] [data-el='text']",
-          { opacity: 0, x: 100, ease: "power3.in", duration: 0.8 },
-          3.5,
-        )
-        .to(bg2Ref.current, { xPercent: -100, ease: "none", duration: 1 }, 3.5)
-        .to(bg3Ref.current, { xPercent: 0, ease: "none", duration: 1 }, 3.5)
-        .to(
-          "[data-panel='3'] [data-el='title']",
-          { opacity: 1, x: 0, ease: "power3.out", duration: 0.8 },
-          4,
-        )
-        .to(
-          "[data-panel='3'] [data-el='imgs'] img",
-          { x: 0, opacity: 1, ease: "back.out", stagger: -0.1, duration: 0.5 },
-          4,
-        )
-        .to(
-          "[data-panel='3'] [data-el='text']",
-          { opacity: 1, x: 0, ease: "power3.out", duration: 0.8 },
-          4,
-        );
+      // Panel 2 exit + BG navy→yellow + Panel 3 enter (1.2 → 2.2)
+      tl.to("[data-panel='2'] [data-el='title']", { opacity: 0, x: -100, ease: "power3.in", duration: 0.5 }, 1.2)
+        .to("[data-panel='2'] [data-el='imgs'] img", { x: 200, opacity: 0, ease: "back.in", stagger: -0.06, duration: 0.35 }, 1.2)
+        .to("[data-panel='2'] [data-el='text']", { opacity: 0, x: 100, ease: "power3.in", duration: 0.5 }, 1.2)
+        .to(bg2Ref.current, { xPercent: -100, ease: "none", duration: 0.7 }, 1.2)
+        .to(bg3Ref.current, { xPercent: 0, ease: "none", duration: 0.7 }, 1.2)
+        .to("[data-panel='3'] [data-el='title']", { opacity: 1, x: 0, ease: "power3.out", duration: 0.5 }, 1.7)
+        .to("[data-panel='3'] [data-el='imgs'] img", { x: 0, opacity: 1, ease: "back.out", stagger: -0.06, duration: 0.35 }, 1.7)
+        .to("[data-panel='3'] [data-el='text']", { opacity: 1, x: 0, ease: "power3.out", duration: 0.5 }, 1.7);
 
-      // ── Panel 3 exit  |  BG yellow → red (rises from below)  |  Panel 4 enter ──
-      tl.to(
-        "[data-panel='3'] [data-el='title']",
-        { opacity: 0, x: -100, ease: "power3.in", duration: 0.8 },
-        6,
-      )
-        .to(
-          "[data-panel='3'] [data-el='imgs'] img",
-          {
-            x: 100,
-            opacity: 0,
-            ease: "back.inOut",
-            stagger: -0.1,
-            duration: 0.5,
-          },
-          6,
-        )
-        .to(
-          "[data-panel='3'] [data-el='text']",
-          { opacity: 0, x: 100, ease: "power3.in", duration: 0.8 },
-          6,
-        )
-        .to(bg3Ref.current, { yPercent: -100, ease: "none", duration: 1 }, 6) // yellow exits upward
-        .to(bg4Ref.current, { yPercent: 0, ease: "none", duration: 1 }, 6) // red rises from below
-        .to(
-          "[data-panel='4'] [data-el='title']",
-          { opacity: 1, x: 0, ease: "power3.out", duration: 0.8 },
-          6.5,
-        )
-        .to(
-          "[data-panel='4'] [data-el='imgs'] img",
-          { y: 0, opacity: 1, ease: "back.out", stagger: 0.1, duration: 0.5 },
-          6.5,
-        )
-        .to(
-          "[data-panel='4'] [data-el='text']",
-          { opacity: 1, x: 0, ease: "power3.out", duration: 0.8 },
-          6.5,
-        );
+      // Panel 3 exit + BG yellow→red + Panel 4 enter (2.4 → 3.4)
+      tl.to("[data-panel='3'] [data-el='title']", { opacity: 0, x: -100, ease: "power3.in", duration: 0.5 }, 2.4)
+        .to("[data-panel='3'] [data-el='imgs'] img", { x: 100, opacity: 0, ease: "back.inOut", stagger: -0.06, duration: 0.35 }, 2.4)
+        .to("[data-panel='3'] [data-el='text']", { opacity: 0, x: 100, ease: "power3.in", duration: 0.5 }, 2.4)
+        .to(bg3Ref.current, { yPercent: -100, ease: "none", duration: 0.7 }, 2.4)
+        .to(bg4Ref.current, { yPercent: 0, ease: "none", duration: 0.7 }, 2.4)
+        .to("[data-panel='4'] [data-el='title']", { opacity: 1, x: 0, ease: "power3.out", duration: 0.5 }, 2.9)
+        .to("[data-panel='4'] [data-el='imgs'] img", { y: 0, opacity: 1, ease: "back.out", stagger: 0.06, duration: 0.35 }, 2.9)
+        .to("[data-panel='4'] [data-el='text']", { opacity: 1, x: 0, ease: "power3.out", duration: 0.5 }, 2.9);
 
-      // ── Panel 4 exit — finale: title & text rise out, images scale down ──
-      tl.to(
-        "[data-panel='4'] [data-el='title']",
-        { opacity: 0, y: -120, ease: "power3.in", duration: 0.8 },
-        8.5,
-      )
-        .to(
-          "[data-panel='4'] [data-el='imgs'] img",
-          {
-            scale: 0.4,
-            opacity: 0,
-            ease: "back.in",
-            stagger: 0.08,
-            duration: 0.5,
-          },
-          8.5,
-        )
-        .to(
-          "[data-panel='4'] [data-el='text']",
-          { opacity: 0, y: -120, ease: "power3.in", duration: 0.8 },
-          8.9,
-        );
+      // Panel 4 exit — finale (3.6 → 4.1)
+      tl.to("[data-panel='4'] [data-el='title']", { opacity: 0, y: -80, ease: "power3.in", duration: 0.5 }, 3.6)
+        .to("[data-panel='4'] [data-el='imgs'] img", { scale: 0.4, opacity: 0, ease: "back.in", stagger: 0.05, duration: 0.35 }, 3.6)
+        .to("[data-panel='4'] [data-el='text']", { opacity: 0, y: -80, ease: "power3.in", duration: 0.5 }, 3.7);
     },
     { scope: sectionRef },
   );

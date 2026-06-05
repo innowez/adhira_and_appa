@@ -176,7 +176,7 @@ export function GallerySection() {
     >
       {/* Background texture */}
       <div
-        className="absolute left-0 top-[6px] w-full overflow-hidden bg-brand-orange"
+        className="absolute left-0 top-[6px] w-full overflow-hidden"
         style={{ height: `${SECTION_H - 6}px` }}
       >
         <div
@@ -191,7 +191,7 @@ export function GallerySection() {
           <img
             src="https://storage.googleapis.com/storage.magicpath.ai/user/410195596943691776/figma-assets/e72ab957-0669-4d32-b605-b792a057d40a.svg"
             alt="Texture Overlay"
-            className="absolute left-0 top-1 object-cover"
+            className="absolute left-0 top-1 object-cover opacity-50"
             style={{
               width: isMobile ? "403px" : "1460px",
               height: `${SECTION_H}px`,

@@ -206,6 +206,8 @@ export function FooterSection() {
               +91 86557 79836
             </p>
 
+            <p className="text-[16px] mb-8">A Unit of KANNIGA FOODS AND BEVERAGES PRIVATE LIMITED</p>
+
             <div className="flex gap-1.5 lg:gap-2">
               <a href="#">
                 <svg

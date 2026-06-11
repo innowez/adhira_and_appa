@@ -94,6 +94,7 @@ export function FooterSection() {
               hello@adhiraandappacoffee.com
             </p>
             <p className="text-[16px]">+91 86557 79836</p>
+<p className="text-[16px]">A Unit of KANNIGA FOODS AND BEVERAGES PRIVATE LIMITED</p>
           </div>
           <div className="flex gap-1.5 lg:gap-2 mt-2 lg:hidden">
             <a href="#">

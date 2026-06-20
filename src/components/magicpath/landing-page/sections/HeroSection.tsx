@@ -80,7 +80,7 @@ export function HeroSection() {
         src={HERO_DESKTOP_BG}
         alt="Adhira & Appa Coffee"
         className="hidden lg:block absolute inset-0 w-full h-full object-cover object-top"
-        style={{ backgroundPosition: "100% 30%"}}
+        style={{ backgroundPosition: "100% 20%"}}
       />
 
       {/* Gradient overlay — stays in place */}

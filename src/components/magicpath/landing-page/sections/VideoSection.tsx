@@ -27,9 +27,12 @@ function IconUnmuted() {
   );
 }
 
+const SHARED_PARAMS = "autoplay=1&mute=1&loop=1&controls=0&modestbranding=1&showinfo=0&rel=0&iv_load_policy=3&disablekb=1&fs=0&enablejsapi=1";
+
 export function VideoSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const desktopIframeRef = useRef<HTMLIFrameElement>(null);
+  const mobileIframeRef = useRef<HTMLIFrameElement>(null);
   const [isMuted, setIsMuted] = useState(true);
 
   useGSAP(
@@ -49,24 +52,35 @@ export function VideoSection() {
   );
 
   function toggleMute() {
-    const win = iframeRef.current?.contentWindow;
-    if (!win) return;
-    const next = !isMuted;
-    // YouTube IFrame API postMessage command (requires enablejsapi=1 in src)
-    win.postMessage(
-      JSON.stringify({ event: "command", func: next ? "unMute" : "mute", args: [] }),
-      "https://www.youtube.com",
-    );
+    const cmd = isMuted ? "unMute" : "mute";
+    for (const ref of [desktopIframeRef, mobileIframeRef]) {
+      ref.current?.contentWindow?.postMessage(
+        JSON.stringify({ event: "command", func: cmd, args: [] }),
+        "https://www.youtube.com",
+      );
+    }
     setIsMuted(!isMuted);
   }
 
   return (
     <section ref={sectionRef} className="relative w-full aspect-9/16 lg:aspect-video overflow-hidden">
+      {/* Desktop — landscape 16:9, cover technique */}
       <iframe
-        ref={iframeRef}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen h-[56.25vw] min-h-screen min-w-[177.78vh] border-0"
-        src="https://www.youtube.com/embed/vLVHTunGq5k?autoplay=1&mute=1&loop=1&playlist=vLVHTunGq5k&controls=0&modestbranding=1&showinfo=0&rel=0&iv_load_policy=3&disablekb=1&fs=0&enablejsapi=1"
-        title="YouTube video player"
+        ref={desktopIframeRef}
+        className="hidden lg:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen h-[56.25vw] min-h-screen min-w-[177.78vh] border-0"
+        src={`https://www.youtube.com/embed/vLVHTunGq5k?${SHARED_PARAMS}&playlist=vLVHTunGq5k`}
+        title="Adhira & Appa — desktop"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerPolicy="strict-origin-when-cross-origin"
+        allowFullScreen
+      />
+
+      {/* Mobile — portrait 9:16 Shorts, fills the container exactly */}
+      <iframe
+        ref={mobileIframeRef}
+        className="block lg:hidden absolute inset-0 w-full h-full border-0"
+        src={`https://www.youtube.com/embed/Hls-gBIUvQw?${SHARED_PARAMS}&playlist=Hls-gBIUvQw`}
+        title="Adhira & Appa — mobile"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen

@@ -4,11 +4,13 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-const HERO_BG =
-  "https://storage.googleapis.com/storage.magicpath.ai/user/410195596943691776/figma-assets/ee8f9fb5-f610-4b02-9ef7-8a5a55a075b7.png";
+const HERO_BG = "./052A6345.jpg"
+const HERO_DESKTOP_BG = './052A6367.jpg'
+  // "https://storage.googleapis.com/storage.magicpath.ai/user/410195596943691776/figma-assets/ee8f9fb5-f610-4b02-9ef7-8a5a55a075b7.png";
 
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -60,10 +62,25 @@ export function HeroSection() {
       id="welcome"
     >
       {/* Background — stays in place */}
-      <img
+      {/* <img
         src={HERO_BG}
         alt="Adhira & Appa Coffee"
         className="absolute inset-0 w-full h-full object-cover"
+      /> */}
+
+      {/* Mobile image — hidden on desktop */}
+      <img
+        src={HERO_BG}
+        alt="Adhira & Appa Coffee"
+        className="block lg:hidden absolute inset-0 w-full h-full object-cover"
+      />
+
+      {/* Desktop image — hidden on mobile */}
+      <img
+        src={HERO_DESKTOP_BG}
+        alt="Adhira & Appa Coffee"
+        className="hidden lg:block absolute inset-0 w-full h-full object-cover object-top"
+        style={{ backgroundPosition: "100% 30%"}}
       />
 
       {/* Gradient overlay — stays in place */}

@@ -116,7 +116,7 @@ export function BehindEveryCupSection() {
           scrollTrigger: {
             trigger: sectionRef.current,
             start: "top 70%",
-            toggleActions: "play none none reverse",
+            toggleActions: "play none none none",
           },
         })
         .from("[data-panel='1'] [data-el='title']", {
@@ -151,6 +151,12 @@ export function BehindEveryCupSection() {
           scrub: 0.5,
           pin: true,
           anticipatePin: 1,
+          snap: {
+            snapTo: [0, 0.26, 0.55, 0.83, 1],
+            duration: { min: 0.4, max: 0.8 },
+            delay: 0.05,
+            ease: "power2.inOut",
+          },
         },
       });
 

@@ -188,8 +188,9 @@ export function FooterSection() {
         {/* DESKTOP FOOTER */}
         <div
           id="footer"
-          className="hidden lg:flex justify-between items-start gap-12"
+          className="hidden lg:block"
         >
+          <div className="flex justify-between items-start gap-12">
           {/* Brand */}
           <div className="text-white">
             <h2 className="text-[48px] font-recoleta font-semibold mb-4">
@@ -208,6 +209,41 @@ export function FooterSection() {
 
             <p className="text-[16px] mb-8">A Unit of KANNIGA FOODS AND BEVERAGES PRIVATE LIMITED</p>
 
+          </div>
+
+          {/* Navigation */}
+          <nav className="flex flex-col gap-4">
+            {NAV_LINKS.map((link) => (
+              <button
+                key={link}
+                className="bg-transparent border-none text-white text-[20px] font-outfit text-left cursor-pointer p-0 hover:text-brand-orange transition-colors"
+              >
+                {link}
+              </button>
+            ))}
+          </nav>
+
+          {/* Logo */}
+          <div className="text-right">
+            <img
+              src={LOGO_FOOTER}
+              alt="Adhira & Appa Logo"
+              className="w-[162px] h-auto object-contain cursor-pointer ml-auto"
+              onClick={() =>
+                window.scrollTo({
+                  top: 0,
+                  behavior: "smooth",
+                })
+              }
+            />
+
+            <p className="text-white text-[20px] font-outfit mt-10">
+              Terms & Conditions
+            </p>
+          </div>
+          </div>
+
+          <div className="flex justify-between w-full">
             <div className="flex gap-1.5 lg:gap-2">
               <a href="#">
                 <svg
@@ -294,40 +330,19 @@ export function FooterSection() {
                   ></path>
                 </svg>
               </a>
+              </div>
+
+              <div className="flex gap-2">
+                <div className="flex gap-1.5">
+
+                <img src="./footer/red.png" alt="" className="w-20 h-20" />
+                <img src="./footer/green.png" alt="" className="w-20 h-20" />
+                </div>
+                <span className="text-white text-sm">Aligned with SDG 3 – Good Health & Well-Being and SDG 8 – <br />Decent Work & Economic Growth, we contribute to healthier <br />communities and sustainable economic development by driving <br />innovation, employment, and accessible solutions for long-term impact.</span>
+              </div>
             </div>
-          </div>
-
-          {/* Navigation */}
-          <nav className="flex flex-col gap-4">
-            {NAV_LINKS.map((link) => (
-              <button
-                key={link}
-                className="bg-transparent border-none text-white text-[20px] font-outfit text-left cursor-pointer p-0 hover:text-brand-orange transition-colors"
-              >
-                {link}
-              </button>
-            ))}
-          </nav>
-
-          {/* Logo */}
-          <div className="text-right">
-            <img
-              src={LOGO_FOOTER}
-              alt="Adhira & Appa Logo"
-              className="w-[162px] h-auto object-contain cursor-pointer ml-auto"
-              onClick={() =>
-                window.scrollTo({
-                  top: 0,
-                  behavior: "smooth",
-                })
-              }
-            />
-
-            <p className="text-white text-[20px] font-outfit mt-10">
-              Terms & Conditions
-            </p>
-          </div>
         </div>
+
       </div>
     </footer>
   );

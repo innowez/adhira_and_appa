@@ -7,6 +7,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { HeroSection } from "./sections/HeroSection";
 import { BehindEveryCupSection } from "./sections/BehindEveryCupSection";
 import { StoryBeansSection } from "./sections/StoryBeansSection";
+import { VideoSection } from "./sections/VideoSection";
 import { WhatsNewSection } from "./sections/WhatsNewSection";
 import { GallerySection } from "./sections/GallerySection";
 import { TestimonialsSection } from "./sections/TestimonialsSection";
@@ -22,8 +23,11 @@ gsap.registerPlugin(ScrollTrigger);
 export function CoffeeBrandLanding() {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 2.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      wheelMultiplier: 0.6,
+      touchMultiplier: 1.5,
+      smoothWheel: true,
     });
 
     // Keep ScrollTrigger in sync with Lenis scroll position
@@ -47,8 +51,10 @@ export function CoffeeBrandLanding() {
       <LoadingScreen />
       <div className="w-full bg-white relative">
         <HeroSection />
+        {/* <VideoSection /> */}
         <BehindEveryCupSection />
         <StoryBeansSection />
+        <VideoSection />
 
         <section id="the_blend">
           <WhatsNewSection />

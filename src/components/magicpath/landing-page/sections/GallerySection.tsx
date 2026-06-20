@@ -27,9 +27,9 @@ function DiscoverOverlay({ size }: { size: number }) {
 const DESKTOP_STROKE_DEFS = [
   { cls: ".path-p1", top: 453.5, h: 261 },
   { cls: ".path-p2", top: 866, h: 660 },
-  { cls: ".path-p3", top: 1778, h: 651 },
-  { cls: ".path-p4", top: 2560.5, h: 250 },
-  { cls: ".path-p5", top: 3011, h: 260 },
+  { cls: ".path-p3", top: 1426, h: 651 },
+  { cls: ".path-p4", top: 2177, h: 250 },
+  { cls: ".path-p5", top: 2427, h: 260 },
 ] as const;
 
 // Mobile stroke path positions — from FoodMenuHero Figma reference
@@ -66,7 +66,7 @@ export function GallerySection() {
           trigger: sectionRef.current,
           start: "top bottom",
           end: "bottom top",
-          scrub: 2,
+          scrub: true,
         },
       });
 
@@ -88,6 +88,9 @@ export function GallerySection() {
         );
       }
 
+      // Each stroke path triggers independently when its SVG enters the viewport.
+      // This ensures upward-curving rope sections are always fully visible regardless
+      // of scroll speed — scrubbing tied to position would miss them on fast scrolls.
       const strokeDefs = isMobile ? MOBILE_STROKE_DEFS : DESKTOP_STROKE_DEFS;
       strokeDefs.forEach(({ cls, top, h }) => {
         const path = sectionRef.current?.querySelector<SVGPathElement>(cls);
@@ -165,27 +168,20 @@ export function GallerySection() {
   }, []);
 
   return (
-    <div
-      ref={sectionRef}
-      className="relative mx-auto overflow-hidden bg-[rgba(255,81,0,1)]"
-      style={{
-        width: "100%",
-        maxWidth: isMobile ? "393px" : "1440px",
-        height: `${SECTION_H}px`,
-      }}
-    >
+    <div className="relative">
       {/* Background texture */}
       <div
-        className="absolute left-0 top-[6px] w-full overflow-hidden"
+        className="absolute left-0 h-full w-full overflow-hidden bg-[rgba(255,81,0,1)]"
         style={{ height: `${SECTION_H - 6}px` }}
       >
         <div
           className="absolute"
           style={{
-            width: isMobile ? "403px" : "1460px",
+            width: "100%",
+            // width: isMobile ? "403px" : "1460px",
             height: `${SECTION_H}px`,
-            left: "-10px",
-            top: "-4px",
+            // left: "-10px",
+            // top: "-4px",
           }}
         >
           <img
@@ -193,12 +189,23 @@ export function GallerySection() {
             alt="Texture Overlay"
             className="absolute left-0 top-1 object-cover opacity-50"
             style={{
-              width: isMobile ? "403px" : "1460px",
+              // width: isMobile ? "403px" : "1460px",
+              width: "100%",
               height: `${SECTION_H}px`,
             }}
           />
         </div>
       </div>
+    <div
+      ref={sectionRef}
+      className="relative mx-auto overflow-hidden "
+      style={{
+        width: "100%",
+        maxWidth: isMobile ? "393px" : "1440px",
+        height: `${SECTION_H}px`,
+      }}
+    >
+      
 
       {isMobile ? (
         // ─────────────────────────────────────────────────────────────────
@@ -678,7 +685,7 @@ export function GallerySection() {
           />
 
           {/* ada4 — left:0, top:821, overflow clip */}
-          <div
+          {/* <div
             className="absolute overflow-hidden"
             style={{
               left: "0px",
@@ -695,7 +702,7 @@ export function GallerySection() {
               className="food-item absolute top-0 object-cover"
               style={{ width: "111.66px", height: "113px", left: "-40.52px" }}
             />
-          </div>
+          </div> */}
 
           {/* 4meal — left:239, top:1013 */}
           <div
@@ -1013,7 +1020,7 @@ export function GallerySection() {
             fill="none"
             viewBox="0 0 970 651"
             className="absolute"
-            style={{ left: "160.27px", top: "1778px" }}
+            style={{ left: "160.27px", top: "1778px", }}
           >
             <path
               className="path-p3"
@@ -1396,7 +1403,7 @@ export function GallerySection() {
             }}
           />
 
-          <div
+          {/* <div
             className="absolute left-0 overflow-hidden"
             style={{ width: "158px", height: "251px", top: "1465px" }}
           >
@@ -1408,7 +1415,7 @@ export function GallerySection() {
               className="food-item absolute top-0 object-cover"
               style={{ width: "248px", height: "251px", left: "-62px" }}
             />
-          </div>
+          </div> */}
 
           <div
             className="absolute cursor-pointer"
@@ -1605,6 +1612,7 @@ export function GallerySection() {
           </button>
         </>
       )}
+    </div>
     </div>
   );
 }

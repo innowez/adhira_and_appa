@@ -183,6 +183,14 @@ export function FooterSection() {
               </svg>
             </a>
           </div>
+
+          <div className="flex gap-2 mt-6">
+            <div className="flex gap-1.5 shrink-0">
+              <img src="./footer/red.png" alt="" className="w-16 h-16" />
+              <img src="./footer/green.png" alt="" className="w-16 h-16" />
+            </div>
+            <span className="text-white text-xs leading-relaxed">Aligned with SDG 3 – Good Health & Well-Being and SDG 8 – Decent Work & Economic Growth, we contribute to healthier communities and sustainable economic development by driving innovation, employment, and accessible solutions for long-term impact.</span>
+          </div>
         </div>
 
         {/* DESKTOP FOOTER */}

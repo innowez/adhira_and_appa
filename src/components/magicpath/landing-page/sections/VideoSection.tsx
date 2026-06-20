@@ -1,14 +1,36 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
+function IconMuted() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M11 5L6 9H2v6h4l5 4V5Z" fill="white" />
+      <line x1="23" y1="9" x2="17" y2="15" stroke="white" strokeWidth="2" strokeLinecap="round" />
+      <line x1="17" y1="9" x2="23" y2="15" stroke="white" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+function IconUnmuted() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M11 5L6 9H2v6h4l5 4V5Z" fill="white" />
+      <path d="M15.54 8.46a5 5 0 0 1 0 7.07" stroke="white" strokeWidth="2" strokeLinecap="round" />
+      <path d="M19.07 4.93a10 10 0 0 1 0 14.14" stroke="white" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 export function VideoSection() {
   const sectionRef = useRef<HTMLElement>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [isMuted, setIsMuted] = useState(true);
 
   useGSAP(
     () => {
@@ -26,24 +48,41 @@ export function VideoSection() {
     { scope: sectionRef },
   );
 
+  function toggleMute() {
+    const win = iframeRef.current?.contentWindow;
+    if (!win) return;
+    const next = !isMuted;
+    // YouTube IFrame API postMessage command (requires enablejsapi=1 in src)
+    win.postMessage(
+      JSON.stringify({ event: "command", func: next ? "unMute" : "mute", args: [] }),
+      "https://www.youtube.com",
+    );
+    setIsMuted(!isMuted);
+  }
+
   return (
     <section ref={sectionRef} className="relative w-full aspect-9/16 lg:aspect-video overflow-hidden">
-      {/*
-        Cover technique: iframe is centered and sized so it always fills the
-        viewport regardless of aspect ratio — same visual behaviour as
-        object-cover on a <video> element.
-        - w-[100vw] h-[56.25vw]  → correct 16:9 at wide viewports
-        - min-h-[100vh] min-w-[177.78vh] → keeps coverage on tall/portrait viewports
-      */}
       <iframe
+        ref={iframeRef}
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-screen h-[56.25vw] min-h-screen min-w-[177.78vh] border-0"
-        src="https://www.youtube.com/embed/vLVHTunGq5k?autoplay=1&mute=1&loop=1&playlist=vLVHTunGq5k&controls=0&modestbranding=1&showinfo=0&rel=0&iv_load_policy=3&disablekb=1&fs=0"
+        src="https://www.youtube.com/embed/vLVHTunGq5k?autoplay=1&mute=1&loop=1&playlist=vLVHTunGq5k&controls=0&modestbranding=1&showinfo=0&rel=0&iv_load_policy=3&disablekb=1&fs=0&enablejsapi=1"
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen
       />
-      <div className="absolute top-0 left-0 w-full h-full "></div>
+
+      {/* Overlay blocks accidental clicks on the iframe */}
+      <div className="absolute inset-0" />
+
+      {/* Mute / unmute — sits above the overlay */}
+      <button
+        onClick={toggleMute}
+        aria-label={isMuted ? "Unmute video" : "Mute video"}
+        className="absolute bottom-6 right-6 z-10 flex items-center justify-center w-11 h-11 rounded-full bg-black/40 backdrop-blur-sm border border-white/20 hover:bg-black/60 transition-colors duration-200 cursor-pointer"
+      >
+        {!isMuted ? <IconMuted /> : <IconUnmuted />}
+      </button>
     </section>
   );
 }

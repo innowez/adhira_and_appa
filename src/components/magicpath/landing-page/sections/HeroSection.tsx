@@ -72,15 +72,16 @@ export function HeroSection() {
       <img
         src={HERO_BG}
         alt="Adhira & Appa Coffee"
-        className="block lg:hidden absolute inset-0 w-full h-full object-cover"
+        className="block lg:hidden absolute inset-0 w-full h-full object-cover object-center"
+        // style={{ objectViewBox: "inset(-15%)" }}
       />
 
       {/* Desktop image — hidden on mobile */}
       <img
         src={HERO_DESKTOP_BG}
         alt="Adhira & Appa Coffee"
-        className="hidden lg:block absolute inset-0 w-full h-full object-cover object-top"
-        style={{ backgroundPosition: "100% 20%"}}
+        className="hidden lg:block absolute inset-0 w-full h-full object-cover"
+        style={{ objectPosition: "center 25%" }}
       />
 
       {/* Gradient overlay — stays in place */}

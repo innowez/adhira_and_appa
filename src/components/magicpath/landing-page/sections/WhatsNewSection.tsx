@@ -100,12 +100,17 @@ export function WhatsNewSection() {
         ref={sectionRef}
         className="relative h-[294px] lg:h-[377px] bg-brand-orange"
       >
+
         <img
           src={MASK}
           alt=""
           aria-hidden
-          className="w-full h-full object-cover relative z-10"
-          style={{ mixBlendMode: "multiply", opacity: 1 }}
+          className="w-full h-full object-cover object-bottom relative z-10"
+          style={{ 
+            mixBlendMode: "multiply", 
+            opacity: 1,
+            filter: "hue-rotate(120deg) saturate(1.5)" // rotate hue to change color
+          }}
         />
 
         <img
@@ -113,28 +118,28 @@ export function WhatsNewSection() {
           src={COFEE_BEAN_3}
           alt=""
           aria-hidden
-          className="object-contain absolute z-20 top-[22px] left-[31px] w-[56px] h-[75px] lg:top-[-54px] lg:left-[560px] lg:w-[181.99px] lg:h-[157.77px]"
+          className="object-contain absolute z-20 top-[22px] left-[31px] w-[56px] h-[75px] lg:top-[-54px] lg:left-1/2 lg:-ml-40 lg:w-[181.99px] lg:h-[157.77px]"
         />
         <img
           ref={bean1Ref}
           src={COFEE_BEAN_1}
           alt=""
           aria-hidden
-          className="object-contain absolute z-20 top-[6.9px] left-[85px] w-[64px] h-[85px] lg:top-[15px] lg:left-[230px] lg:w-[181.993px] lg:h-[157.766px]"
+          className="object-contain absolute z-20 top-[6.9px] left-[85px] w-[64px] h-[85px] lg:top-[15px] lg:left-1/2 lg:-ml-122.5 lg:w-[181.993px] lg:h-[157.766px]"
         />
         <img
           ref={bean2Ref}
           src={COFEE_BEAN_2}
           alt=""
           aria-hidden
-          className="object-contain absolute z-20 top-[115px] left-[303px] w-[58px] h-[78px] lg:top-[112px] lg:left-[961px] lg:w-[227.228px] lg:h-[181.615px]"
+          className="object-contain absolute z-20 top-[115px] left-[303px] w-[58px] h-[78px] lg:top-[112px] lg:left-1/2 lg:ml-60.25 lg:w-[227.228px] lg:h-[181.615px]"
         />
         <img
           ref={ombleteRef}
           src={OMBLETE}
           alt=""
           aria-hidden
-          className="object-contain absolute z-20 top-[191px] left-[202px] w-[79px] h-[81px] lg:top-[256.5px] lg:left-[770px] lg:w-[167px] lg:h-[171px]"
+          className="object-contain absolute z-20 top-[191px] left-[202px] w-[79px] h-[81px] lg:top-[256.5px] lg:left-1/2 lg:ml-12.5 lg:w-41.75 lg:h-42.75"
         />
 
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 text-white">

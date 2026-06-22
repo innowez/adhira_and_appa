@@ -54,7 +54,7 @@ export function GallerySection() {
     return () => window.removeEventListener("resize", check);
   }, []);
 
-  const SECTION_H = isMobile ? 1907 : 3600;
+  const SECTION_H = isMobile ? 1901 : 3600;
 
   useGSAP(
     () => {
@@ -172,7 +172,7 @@ export function GallerySection() {
       {/* Background texture */}
       <div
         className="absolute left-0 h-full w-full overflow-hidden bg-[rgba(255,81,0,1)]"
-        style={{ height: `${SECTION_H - 6}px` }}
+        style={{ height: `${SECTION_H}px` }}
       >
         <div
           className="absolute"

@@ -25,7 +25,7 @@ export const FoodMenuHero: React.FC<FoodMenuHeroProps> = ({
   const containerStyle: React.CSSProperties = {
     width: "100%",
     maxWidth: "393px",
-    height: "1907px",
+    height: "1901px",
     boxSizing: "border-box",
     overflow: "hidden",
     position: "relative",

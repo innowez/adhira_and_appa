@@ -8,7 +8,7 @@ import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-const HERO_BG = "./052A6345.jpg"
+const HERO_BG = "./052A6611.jpg"
 const HERO_DESKTOP_BG = './052A6367.jpg'
   // "https://storage.googleapis.com/storage.magicpath.ai/user/410195596943691776/figma-assets/ee8f9fb5-f610-4b02-9ef7-8a5a55a075b7.png";
 
@@ -73,7 +73,7 @@ export function HeroSection() {
         src={HERO_BG}
         alt="Adhira & Appa Coffee"
         className="block lg:hidden absolute inset-0 w-full h-full object-cover object-center"
-        // style={{ objectViewBox: "inset(-15%)" }}
+        style={{ objectViewBox: "inset(-0%)" }}
       />
 
       {/* Desktop image — hidden on mobile */}

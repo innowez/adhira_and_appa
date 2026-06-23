@@ -8,9 +8,9 @@ import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-const HERO_BG = "./052A6611.jpg"
-const HERO_DESKTOP_BG = './052A6367.jpg'
-  // "https://storage.googleapis.com/storage.magicpath.ai/user/410195596943691776/figma-assets/ee8f9fb5-f610-4b02-9ef7-8a5a55a075b7.png";
+// const HERO_BG = "./052A6611.jpg"
+// const HERO_DESKTOP_BG = './052A6367.jpg'
+const HERO_BG =  "https://storage.googleapis.com/storage.magicpath.ai/user/410195596943691776/figma-assets/ee8f9fb5-f610-4b02-9ef7-8a5a55a075b7.png";
 
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -62,27 +62,27 @@ export function HeroSection() {
       id="welcome"
     >
       {/* Background — stays in place */}
-      {/* <img
+      <img
         src={HERO_BG}
         alt="Adhira & Appa Coffee"
         className="absolute inset-0 w-full h-full object-cover"
-      /> */}
+      />
 
       {/* Mobile image — hidden on desktop */}
-      <img
+      {/* <img
         src={HERO_BG}
         alt="Adhira & Appa Coffee"
         className="block lg:hidden absolute inset-0 w-full h-full object-cover object-center"
         style={{ objectViewBox: "inset(-0%)" }}
-      />
+      /> */}
 
       {/* Desktop image — hidden on mobile */}
-      <img
+      {/* <img
         src={HERO_DESKTOP_BG}
         alt="Adhira & Appa Coffee"
         className="hidden lg:block absolute inset-0 w-full h-full object-cover"
         style={{ objectPosition: "center 25%" }}
-      />
+      /> */}
 
       {/* Gradient overlay — stays in place */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/30" />

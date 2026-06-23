@@ -17,6 +17,7 @@ import { NavDots } from "./sections/NavDots";
 import { FeelYours } from "./sections/FeelYours";
 import { Publications } from "./sections/Publications";
 import LoadingScreen from "@/components/common/LoadingScreen";
+import AmasiterImage from "./sections/AmasiterImage";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -51,6 +52,7 @@ export function CoffeeBrandLanding() {
       <LoadingScreen />
       <div className="w-full bg-white relative">
         <HeroSection />
+        <AmasiterImage />
         {/* <VideoSection /> */}
         <BehindEveryCupSection />
         <StoryBeansSection />
